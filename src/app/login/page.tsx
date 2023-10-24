@@ -4,8 +4,9 @@ import { LoginFormValues } from '../types/LoginFormValues'
 import { LoginProps } from '../types/LoginProps'
 
 export default function Login({ setUserLogIn }: LoginProps) {
-  const usernameRef = useRef<HTMLInputElement>(null)
-  const passwordRef = useRef<HTMLInputElement>(null)
+  const usernameRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
+  const LOGIN_URL = 'https://technical-task-api.icapgroupgmbh.com/api/login/';
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -20,17 +21,14 @@ export default function Login({ setUserLogIn }: LoginProps) {
       }
 
       try {
-        const response = await fetch(
-          'https://technical-task-api.icapgroupgmbh.com/api/login/',
-          {
-            method: 'POST',
-            headers: {
-              accept: 'application/json',
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formData)
-          }
-        )
+        const response = await fetch(LOGIN_URL, {
+          method: 'POST',
+          headers: {
+            accept: 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        })
 
         if (response.status === 200) {
           setUserLogIn(true)

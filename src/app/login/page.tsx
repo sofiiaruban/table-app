@@ -2,6 +2,7 @@
 import React, { useRef } from 'react'
 import { LoginFormValues } from '../types/LoginFormValues'
 import { LoginProps } from '../types/LoginProps'
+import Button from '../components/Button';
 
 export default function Login({ setUserLogIn }: LoginProps) {
   const usernameRef = useRef<HTMLInputElement>(null);
@@ -61,12 +62,7 @@ export default function Login({ setUserLogIn }: LoginProps) {
           className="border rounded px-3 py-2 mb-3"
           required
         />
-        <button
-          type="submit"
-          className="border bg-indigo-200 hover:bg-indigo-300 rounded px-3 py-2"
-        >
-          Log in
-        </button>
+        <Button title="Log in"/>
       </form>
     </div>
   )

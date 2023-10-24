@@ -1,8 +1,14 @@
-import Image from 'next/image'
+'use client'
+import React, { useState } from 'react'
+import Login from './login/page'
+import Table from './components/Table';
 
 export default function Home() {
+  const [isUserLogin, setUserLogIn] = useState<boolean>(false);
+  
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-    </main>
+    <div className="w-full">
+      {!isUserLogin ? <Login setUserLogIn={setUserLogIn} /> : <Table list={[]} />}
+    </div>
   )
 }

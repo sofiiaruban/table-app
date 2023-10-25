@@ -2,7 +2,7 @@
 import React, { useRef } from 'react'
 import { LoginFormValues } from '../types/LoginFormValues'
 import { LoginProps } from '../types/LoginProps'
-import Button from '../components/Button';
+import Button from './Button';
 
 export default function Login({ setUserLogIn }: LoginProps) {
   const usernameRef = useRef<HTMLInputElement>(null);

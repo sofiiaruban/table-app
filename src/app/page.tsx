@@ -1,7 +1,8 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import Login from './login/page'
+import Login from './components/login';
 import {useRouter} from 'next/navigation'
+
 export default function Auth() {
   const [isUserLogin, setUserLogIn] = useState<boolean>(false);
   const navigate= useRouter();

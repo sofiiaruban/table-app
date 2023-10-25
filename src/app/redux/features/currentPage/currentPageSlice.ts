@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { RootState } from '../../store'
 import { CurrentPage } from '@/app/types/CurrentPage'
+import { RootState } from '../../store'
 
 
 const initialState: CurrentPage = {

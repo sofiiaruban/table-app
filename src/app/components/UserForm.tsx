@@ -82,6 +82,10 @@ export default function UserForm({ editMode }: UserFormProps) {
     }
   }
 
+  const handleCloseButton = () => {
+    navigate.push('/home')
+  }
+
   useEffect(() => {
     if (editMode) {
       const fetchData = async () => {
@@ -106,9 +110,18 @@ export default function UserForm({ editMode }: UserFormProps) {
   
   return (
     <div className="flex flex-col border rounded p-3 w-96">
-      <h2 className="text-center font-bold mb-3">
-        {editMode ? 'Update user' : 'Add user'}
-      </h2>
+      <div className="flex justify-between">
+        <h2 className="text-center font-bold mb-3">
+          {editMode ? 'Update user' : 'Add user'}
+        </h2>
+        <div
+          className="cursor-pointer"
+          role="button"
+          onClick={handleCloseButton}
+        >
+          &#10005;
+        </div>
+      </div>
       <form onSubmit={handleSubmit}>
         <input
           type="text"

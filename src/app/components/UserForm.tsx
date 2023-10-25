@@ -17,13 +17,14 @@ export default function UserForm({ editMode }: UserFormProps) {
     phone_number: '',
     address: ''
   })
- function transformDate(inputDate: string) {
-   const [day, month, year] = inputDate.split('-')
 
-   const transformedDate = `20${year}-${month}-${day}`
+  const transformDate = (inputDate: string) => {
+    const [day, month, year] = inputDate.split('-')
+    const transformedDate = `20${year}-${month}-${day}`
 
-   return transformedDate
- }
+    return transformedDate
+  }
+
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value
     const name = event.target.name

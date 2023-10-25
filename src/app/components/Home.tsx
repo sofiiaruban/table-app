@@ -3,10 +3,10 @@ import React, { useEffect, useState } from 'react'
 import Pagination from './Pagination'
 import Button from './Button'
 import Link from 'next/link'
-import { useDispatch, useSelector } from 'react-redux'
 import Table from './Table'
 import { PageClickEvent } from '../types/PageClickEvent'
 import { selectCurrentPage, setCurrentPage } from '../redux/features/currentPage/currentPageSlice'
+import { useDispatch, useSelector } from 'react-redux'
 
 export default function Home() {
   const ITEMS_PER_PAGE = 10

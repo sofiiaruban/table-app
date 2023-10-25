@@ -19,16 +19,16 @@ export default function Table({list}: TableProps) {
       <tbody>
         {Array.isArray(list) ? (
           list.map((item) => (
-              <tr className="p-2" key={item.id}>
-                <Link href={`user/${item.id}`}>
+            <Link href={`user/${item.id}`} key={item.id} className="p-2">
+              <tr>
                 <td className="border p-2">{item.id}</td>
                 <td className="border p-2">{item.name}</td>
                 <td className="border p-2">{item.email}</td>
                 <td className="border p-2">{item.birthday_date}</td>
                 <td className="border p-2">{item.phone_number}</td>
                 <td className="border p-2">{item.address}</td>
-                </Link>
               </tr>
+            </Link>
           ))
         ) : (
           <tr>

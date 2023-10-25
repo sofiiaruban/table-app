@@ -76,22 +76,22 @@ export default function UserForm({ editMode }: UserFormProps) {
 
   useEffect(() => {
     if (editMode) {
-    const fetchData = async () => {
-       try {
-         const response = await fetch(`${URL}/${id}`)
-         if (!response.ok) {
-           throw new Error(`Request failed with status: ${response.status}`)
-         }
-         const data = await response.json()
-         setFormData(data)
-       } catch (error) {
-         console.error('Error fetching data:', error)
-       }
-     }
+      const fetchData = async () => {
+        try {
+          const response = await fetch(`${URL}/${id}`)
+          if (!response.ok) {
+            throw new Error(`Request failed with status: ${response.status}`)
+          }
+          const data = await response.json()
+          setFormData(data)
+        } catch (error) {
+          console.error('Error fetching data:', error)
+        }
+      }
 
-     fetchData()
+      fetchData()
     }
-  }, [])
+  }, [editMode, id])
   
   return (
     <div className="flex flex-col border rounded p-3 w-96">
@@ -145,7 +145,7 @@ export default function UserForm({ editMode }: UserFormProps) {
           className="border p-2 w-full"
           onChange={handleChange}
         />
-        <div className="flex justify-between">
+        <div className="flex justify-between pt-3">
           <Button
             title="Delete user"
             type="button"

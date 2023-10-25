@@ -31,7 +31,7 @@ export default function Home() {
   }
   useEffect(() => {
     getTableData()
-  }, [ offset])
+  }, [offset, getTableData])
 
   const handlePageClick = (event: PageClickEvent) => {
     setOffset(event.selected)

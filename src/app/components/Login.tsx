@@ -1,13 +1,15 @@
 'use client'
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { LoginFormValues } from '../types/LoginFormValues'
-import { LoginProps } from '../types/LoginProps'
+import { useRouter } from 'next/navigation'
 import Button from './Button';
 
-export default function Login({ setUserLogIn }: LoginProps) {
+export default function Login() {
+  const navigate = useRouter();
   const usernameRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
   const LOGIN_URL = 'https://technical-task-api.icapgroupgmbh.com/api/login/';
+  const [error, setError] = useState<boolean>(false);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -32,12 +34,14 @@ export default function Login({ setUserLogIn }: LoginProps) {
         })
 
         if (response.status === 200) {
-          setUserLogIn(true)
+            navigate.push('/home')
         } else {
           console.log('Login failed')
+          setError(true)
         }
       } catch (error) {
         console.error('An error occurred', error)
+        setError(true)
       }
     }
   }
@@ -62,7 +66,8 @@ export default function Login({ setUserLogIn }: LoginProps) {
           className="border rounded px-3 py-2 mb-3"
           required
         />
-        <Button title="Log in"/>
+        {error ? <p className="mb-3 text-rose-400">Oops... Try again</p> : null}
+        <Button title="Log in" />
       </form>
     </div>
   )

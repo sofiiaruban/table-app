@@ -1,6 +1,6 @@
 // import UserForm from "@/app/components/UserForm";
 
-export default function EditUser() {
+export default function Page() {
   return (
     <div className="w-full flex flex-col justify-center items-center h-screen">
       EDIT USER FORM

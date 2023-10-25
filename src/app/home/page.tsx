@@ -11,8 +11,8 @@ export default function Home() {
   const ITEMS_PER_PAGE = 10;
   const [tableData, setTableData] = useState([]);
   const [count, setCount] = useState<number>(0);
-  const pageCount: number = count ? Math.ceil( count / ITEMS_PER_PAGE) : 0;
-  const [offset, setOffset]= useState<number>(0)
+  const pageCount: number = Math.ceil(count/ITEMS_PER_PAGE) | 0;
+  const [offset, setOffset]= useState<number>(0);
   const TABLE_URL =`https://technical-task-api.icapgroupgmbh.com/api/table/?limit=10&offset=${offset*10}`;
 
   const getTableData = async () => {
@@ -29,6 +29,7 @@ export default function Home() {
        console.error('An error occurred while fetching table data:', error)
      }
   }
+
   useEffect(() => {
     getTableData()
   }, [offset, getTableData])

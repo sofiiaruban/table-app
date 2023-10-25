@@ -52,7 +52,7 @@ export default function Home() {
 
   return (
     <ReduxProvider>
-      <div className="w-full flex flex-col  items-center h-screen">
+      <div className="w-full flex flex-col items-center h-screen">
         <Table list={tableData} />
         <div className="container flex justify-center gap-28">
           <Pagination pageCount={pageCount} handlePageClick={handlePageClick} currentPage={currentPage}/>

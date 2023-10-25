@@ -6,10 +6,10 @@ import Button from './Button';
 
 export default function Login() {
   const navigate = useRouter();
-  const usernameRef = useRef<HTMLInputElement>(null);
-  const passwordRef = useRef<HTMLInputElement>(null);
-  const LOGIN_URL = 'https://technical-task-api.icapgroupgmbh.com/api/login/';
-  const [error, setError] = useState<boolean>(false);
+  const usernameRef = useRef<HTMLInputElement>(null)
+  const passwordRef = useRef<HTMLInputElement>(null)
+  const LOGIN_URL = 'https://technical-task-api.icapgroupgmbh.com/api/login/'
+  const [error, setError] = useState<boolean>(false)
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()

@@ -30,7 +30,7 @@ export default function Table({list}: TableProps) {
               <td className="border p-2">{item.address}</td>
               <td className="border p-2">
                 <Link href={`user/${item.id}`} className="p-2">
-                  <Button title="Edit user"></Button>
+                  <Button title="Edit user" />
                 </Link>
               </td>
             </tr>
@@ -44,4 +44,3 @@ export default function Table({list}: TableProps) {
     </table>
   )
 }
-//                      

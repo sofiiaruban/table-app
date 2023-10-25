@@ -98,7 +98,6 @@ export default function UserForm({ editMode }: UserFormProps) {
           const transformedDate = transformDate(data.birthday_date)
           data.birthday_date = transformedDate
           setFormData(data)
-          console.log(data.birthday_date)
         } catch (error) {
           console.error('Error fetching data:', error)
         }

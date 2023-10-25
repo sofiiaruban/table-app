@@ -12,7 +12,7 @@ export default function Home() {
   const [tableData, setTableData] = useState([]);
   const [count, setCount] = useState<number>(0);
   const [offset, setOffset]= useState<number>(0);
-  const [pageCount, setPageCount] = useState<number>(0);
+  const pageCount: number = Math.ceil(count / ITEMS_PER_PAGE) | 0;
   const TABLE_URL =`https://technical-task-api.icapgroupgmbh.com/api/table/?limit=10&offset=${offset*10}`;
 
   const getTableData = async () => {
@@ -33,11 +33,6 @@ export default function Home() {
   useEffect(() => {
     getTableData()
   }, [offset, getTableData])
-
-  useEffect(() => {
-   const nextCount: number = Math.ceil(count / ITEMS_PER_PAGE);
-   setPageCount(nextCount);
-  }, [count])
 
   const handlePageClick = (event: PageClickEvent) => {
     setOffset(event.selected)

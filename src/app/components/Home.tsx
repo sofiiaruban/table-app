@@ -1,16 +1,12 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import Table from './Table'
 import Pagination from './Pagination'
 import Button from './Button'
 import Link from 'next/link'
 import { useDispatch, useSelector } from 'react-redux'
-import {
-  selectCurrentPage,
-  setCurrentPage
-} from '../redux/features/currentPage/currentPageSlice'
-import ReduxProvider from '../redux/ReduxProvider'
+import Table from './Table'
 import { PageClickEvent } from '../types/PageClickEvent'
+import { selectCurrentPage, setCurrentPage } from '../redux/features/currentPage/currentPageSlice'
 
 export default function Home() {
   const ITEMS_PER_PAGE = 10
@@ -51,16 +47,14 @@ export default function Home() {
   }
 
   return (
-    <ReduxProvider>
-      <div className="w-full flex flex-col items-center h-screen">
-        <Table list={tableData} />
-        <div className="container flex justify-center gap-28">
-          <Pagination pageCount={pageCount} handlePageClick={handlePageClick} currentPage={currentPage}/>
-          <Link href={'/user'}>
-            <Button title="Add user" />
-          </Link>
-        </div>
+    <div className="w-full flex flex-col items-center h-screen">
+      <Table list={tableData} />
+      <div className="container flex justify-center gap-28">
+        <Pagination pageCount={pageCount} handlePageClick={handlePageClick} currentPage={currentPage}/>
+        <Link href={'/user'}>
+          <Button title="Add user" />
+        </Link>
       </div>
-    </ReduxProvider>
+    </div>
   )
 }

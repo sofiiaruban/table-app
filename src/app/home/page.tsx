@@ -32,20 +32,20 @@ export default function Home() {
 
   useEffect(() => {
     getTableData()
-  }, [offset, getTableData])
+  }, [offset])
 
   const handlePageClick = (event: PageClickEvent) => {
     setOffset(event.selected)
   }
 
   return (
-    <div className="w-full flex flex-col justify-center items-center h-screen">
+    <div className="w-full flex flex-col  items-center h-screen">
       <Table list={tableData} />
-      <Pagination pageCount={pageCount} handlePageClick={handlePageClick} />
-      <div className="container flex justify-end pr-32">
-        <Link href={'/user'}>
-          <Button title="Add user" />
-        </Link>
+      <div className="container flex justify-center gap-28">
+        <Pagination pageCount={pageCount} handlePageClick={handlePageClick} />
+          <Link href={'/user'}>
+            <Button title="Add user" />
+          </Link>
       </div>
     </div>
   )

@@ -5,7 +5,7 @@ import { PaginationProps } from '../types/PaginationProps'
 export default function Pagination({pageCount, handlePageClick}: PaginationProps) {
   return (
     <ReactPaginate
-      className="flex gap-3"
+      className="flex gap-3 items-center"
       breakLabel="..."
       nextLabel="next >"
       onPageChange={handlePageClick}

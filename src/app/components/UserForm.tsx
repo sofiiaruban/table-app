@@ -17,7 +17,13 @@ export default function UserForm({ editMode }: UserFormProps) {
     phone_number: '',
     address: ''
   })
+ function transformDate(inputDate: string) {
+   const [day, month, year] = inputDate.split('-')
 
+   const transformedDate = `20${year}-${month}-${day}`
+
+   return transformedDate
+ }
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value
     const name = event.target.name
@@ -27,6 +33,7 @@ export default function UserForm({ editMode }: UserFormProps) {
       [name]: value
     }))
   }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     const requestOptions = {
@@ -37,7 +44,7 @@ export default function UserForm({ editMode }: UserFormProps) {
       body: JSON.stringify(formData)
     }
 
-    const apiUrl = editMode ? `${URL}/${id}/` : URL
+    const apiUrl = editMode ? `${URL}/${id}/` : `${URL}/`
 
     try {
       const response = await fetch(apiUrl, requestOptions)
@@ -83,7 +90,10 @@ export default function UserForm({ editMode }: UserFormProps) {
             throw new Error(`Request failed with status: ${response.status}`)
           }
           const data = await response.json()
+          const transformedDate = transformDate(data.birthday_date)
+          data.birthday_date = transformedDate
           setFormData(data)
+          console.log(data.birthday_date)
         } catch (error) {
           console.error('Error fetching data:', error)
         }
@@ -120,7 +130,6 @@ export default function UserForm({ editMode }: UserFormProps) {
         <input
           type="date"
           name="birthday_date"
-          placeholder="Enter your birthday date"
           value={formData.birthday_date || ''}
           required
           className="border p-2 w-full mb-3"
@@ -145,15 +154,23 @@ export default function UserForm({ editMode }: UserFormProps) {
           className="border p-2 w-full"
           onChange={handleChange}
         />
-        <div className="flex justify-between pt-3">
-          <Button
-            title="Delete user"
-            type="button"
-            handleClick={handleDelete}
-          />
+        <div
+          className={`flex ${
+            editMode ? 'justify-between' : 'justify-end'
+          } pt-3`}
+        >
+          {editMode ? (
+            <Button
+              title="Delete user"
+              type="button"
+              handleClick={handleDelete}
+            />
+          ) : null}
           <Button title={editMode ? 'Update user' : 'Add user'} />
         </div>
       </form>
     </div>
   )
 }
+
+

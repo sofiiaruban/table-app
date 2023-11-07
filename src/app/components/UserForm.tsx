@@ -17,7 +17,7 @@ export default function UserForm({ editMode }: UserFormProps) {
     phone_number: '',
     address: ''
   })
-
+  console.log(id)
   const transformDate = (inputDate: string) => {
     const [day, month, year] = inputDate.split('-')
     const transformedDate = `20${year}-${month}-${day}`
